@@ -1,9 +1,12 @@
-import RegistrationForm from "./components/registrationform/RegistrationForm";
-
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./components/Home/Home";
+import Facilities from "./components/Facilities/Facilities";
 function App() {
   return (
     <div>
-      <RegistrationForm/>
+      <Navbar/>
+      <Home/>
+      <Facilities/>
     </div>
   );
 }
