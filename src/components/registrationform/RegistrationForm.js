@@ -118,11 +118,7 @@ function RegistrationForm() {
                 <img src={qrUrl}/>
                 </a>}
                 </div>
-<<<<<<< HEAD
                 {/* <QrReader
-=======
-               { readqrValue && <QrReader
->>>>>>> 719d55ed48ba4b8b0854d45167adec121d23cb73
           delay={300}
           
           onError={handleQrScanError}
@@ -130,12 +126,7 @@ function RegistrationForm() {
           onResult={(result,error)=>{
 handleQrScan(result);
           }}  
-<<<<<<< HEAD
           /> */}
-=======
-          />
-        }
->>>>>>> 719d55ed48ba4b8b0854d45167adec121d23cb73
           <p>{data}</p>
           </div>
           

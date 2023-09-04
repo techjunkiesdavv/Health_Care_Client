@@ -8,7 +8,7 @@ import GenerateOtp from "./components/Registration/GenerateOtp";
 import Hospital from "./components/Registration/Hospital";
 import LoginForm from "./components/Registration/LoginForm";
 import Patient from "./components/Registration/Patient";
-import RegistrationForm from "./components/Registration/RegistrationForm";
+import RegistrationForm from "./components/registrationform/RegistrationForm";
 
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
@@ -27,6 +27,8 @@ function App() {
               <>
               <Home/>
               <Facilities/>
+              <AddHealthinfoForm />
+              <RegistrationForm />
               </>
               } />
             
