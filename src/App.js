@@ -10,24 +10,36 @@ import LoginForm from "./components/Registration/LoginForm";
 import Patient from "./components/Registration/Patient";
 import RegistrationForm from "./components/Registration/RegistrationForm";
 
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./components/Home/Home";
+import Facilities from "./components/Facilities/Facilities";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
-const App = () => {
+function App() {
   return (
-    <div>
-      {/* <RegistrationForm/> */}
-      {/* <GenerateOtp/> */}
-      <Patient/>
-      {/* <Hospital/> */}
-      {/* <BookAppointment/> */}
-      {/* <LoginForm/> */}
-      {/* <HealthcareContent/> */}
-      {/* <Healthcare/> */}
-      
-      {/* <AddHealthinfoForm  /> */}
-  
+  <BrowserRouter >
+      <Navbar/>
+     <Routes>
+            <Route
+              path="/"
+              element={
+              <>
+              <Home/>
+              <Facilities/>
+              </>
+              } />
+            
+              
+              <Route
+              path="/patient"
+              element={<Patient/>} />
+              
+              </Routes>
 
-    </div>
+      
+      
+  </BrowserRouter>
   );
 }
 
