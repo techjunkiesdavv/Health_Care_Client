@@ -1,0 +1,79 @@
+.patient-form-register{
+  background-image: url('../../assets/bg-form.jpg');
+  
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+align-items: center;
+  justify-content: center;
+
+
+ 
+
+.patient-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+  // display: flex;
+align-items: center;
+  // justify-content: center;
+  h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+  }
+
+  form {
+    label {
+      display: none;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      margin-top: 20px;
+
+      padding: 0.5rem 0.5rem;
+      border: none;
+      border-bottom: 1px solid #060606;
+      border-radius: 0.25rem;
+    
+      background-color: rgba(0, 0, 0, 0.05); 
+      color: #333;
+      transition: border-color 0.3s, background-color 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: #000000;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #464a4e;
+      color: #ffffff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #000000;
+      }
+    }
+  }
+}
+}
