@@ -1,0 +1,77 @@
+.book-appointment-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+    h2 {
+      margin-bottom: 10px;
+    }
+  
+    .calendar-container {
+      margin-bottom: 15px;
+    }
+  
+    .time-slot-selection {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+  
+      label {
+        flex: 1;
+        margin-right: 10px;
+      }
+  
+      select {
+        flex: 2;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    }
+  
+    button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+  
+      &[disabled] {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+  /* BookAppointment.scss */
+
+/* Style the calendar dates */
+.react-calendar {
+  .react-calendar__tile {
+    background-color: #e8c33f; /* Blue background color for dates */
+    color: #ffffff; /* White text color for dates */
+    border: 1px solid #3498db; /* Blue border for dates */
+    
+  }
+
+  /* Style the selected date */
+  .react-calendar__tile--active {
+
+    background-color: #e74c3c; /* Red background color for selected date */
+    color: #ffffff; /* White text color for selected date */
+  }
+
+  /* Style the disabled dates */
+  .react-calendar__tile--disabled {
+    background-color: #bdc3c7; /* Gray background color for disabled dates */
+    color: #95a5a6; /* Light gray text color for disabled dates */
+  }
+}

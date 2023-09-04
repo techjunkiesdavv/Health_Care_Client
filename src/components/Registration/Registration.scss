@@ -1,0 +1,102 @@
+.registration-form-container{
+  background-image: url('../../assets/bg-form.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+align-items: center;
+  justify-content: center;
+
+.registration-form {
+  min-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  
+  background: linear-gradient(to bottom, #f0f0f040, #e0e0e0);
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #269ea2;
+    margin-bottom: 20px;
+  }
+
+  form {
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      
+      border-color: #269ea2;
+    }
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      margin-top: 30px;
+      border-radius: 30px;
+      border-bottom: 2px solid #ccc;
+      font-size: 16px;
+      color: #333;
+      
+      background-color: rgba(237, 225, 225, 0.445);
+      transition: border-color 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: #269ea2;
+      }
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 30px;
+      border-bottom: 2px solid #ccc;
+      font-size: 16px;
+      color: #000000;
+      background-color: rgba(237, 225, 225, 0.445);
+      transition: border-color 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: #269ea2;
+      }
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #269ea2;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color:#063f41 ;
+      }
+    }
+  }
+
+  .form-stage {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+}

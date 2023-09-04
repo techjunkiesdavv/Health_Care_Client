@@ -1,0 +1,136 @@
+
+
+.hospital-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+    h2 {
+      margin-bottom: 20px;
+    }
+  
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  
+    input[type="text"],
+    input[type="password"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+  
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  
+    .selected-treatments {
+      margin-top: 20px;
+  
+      li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 14px;
+  
+        button {
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+          margin-left: 10px;
+  
+          &:hover {
+            color: #f44336; 
+          }
+        }
+      }
+  
+      i.fas {
+        margin-right: 5px;
+      }
+    }
+  
+    button[type="button"] {
+      padding: 10px 20px;
+      background-color: #007bff; 
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  
+    button[type="submit"] {
+      background-color: #28a745; 
+      &:hover {
+        background-color: #1d7331; 
+      }
+    }
+  
+    .delete-button {
+      background-color: transparent;
+      border: none;
+      color: #999;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+  }
+  
+  .specialist-doctors {
+    margin-top: 20px;
+  
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 14px;
+  
+      input {
+        flex: 1;
+        margin-right: 10px;
+      }
+  
+      button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+  
+        &:hover {
+          color: #f44336; 
+        }
+      }
+  
+      i.fas {
+        margin-right: 5px;
+      }
+    }
+    
+  }
+  
+  
+  
