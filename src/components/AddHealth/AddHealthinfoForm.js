@@ -33,6 +33,7 @@ const AddHealthinfoForm = () => {
   };
 
   return (
+    <div className='addhealth-main-container'>
     <form className="add-health-info-form" onSubmit={handleSubmit}>
       <label>Title:</label>
       <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
@@ -74,6 +75,7 @@ const AddHealthinfoForm = () => {
 
       <button type="submit">Add Health Info</button>
     </form>
+    </div>
   );
 };
 

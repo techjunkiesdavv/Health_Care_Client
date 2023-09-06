@@ -1,6 +1,22 @@
+.addhealth-main-container{
+  background-image: url('../../assets/bg-form.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+align-items: center;
+  justify-content: center;
+
+
 .add-health-info-form {
-    max-width: 400px;
-    margin: 0 auto;
+  min-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #269ea2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   
     label {
       display: block;
@@ -61,4 +77,4 @@
       cursor: pointer;
     }
   }
-  
+}

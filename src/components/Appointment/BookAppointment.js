@@ -52,12 +52,15 @@ const BookAppointment = () => {
       </div>
       {selectedDate && (
         <div className="time-slot-selection">
+          <div>
           <label>Select a Time Slot:</label>
           <select value={selectedTimeSlot} onChange={handleTimeSlotChange}>
             <option value="">Select Time Slot</option>
             {renderTimeSlots()}
           </select>
-          <p>Available Seats: {availableSeats[selectedDate.getDay()]}</p>
+        </div>
+        
+        <div>Available Seats: {availableSeats[selectedDate.getDay()]}</div>
         </div>
       )}
       <button

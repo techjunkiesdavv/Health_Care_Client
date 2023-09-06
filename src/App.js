@@ -9,24 +9,65 @@ import Hospital from "./components/Registration/Hospital";
 import LoginForm from "./components/Registration/LoginForm";
 import Patient from "./components/Registration/Patient";
 import RegistrationForm from "./components/Registration/RegistrationForm";
+import DoctorForm from './components/Registration/DoctorForm';
+import { Typography, AppBar } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
+import VideoPlayer from './components/VideoPlayer';
+import Sidebar from './components/Sidebar';
+import Notifications from './components/Notifications';
 
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    borderRadius: 15,
+    margin: '30px 100px',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '600px',
+    border: '2px solid black',
 
+    [theme.breakpoints.down('xs')]: {
+      width: '90%',
+    },
+  },
+  image: {
+    marginLeft: '15px',
+  },
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+  },
+}));
 const App = () => {
+  
   return (
     <div>
       {/* <RegistrationForm/> */}
+      {/* <DoctorForm/> */}
+        {/* <Patient/> */}
       {/* <GenerateOtp/> */}
-      <Patient/>
-      {/* <Hospital/> */}
+     {/* <Hospital/> */}
+     {/* <LoginForm/> */}
+
       {/* <BookAppointment/> */}
-      {/* <LoginForm/> */}
-      {/* <HealthcareContent/> */}
+      
+     
       {/* <Healthcare/> */}
       
       {/* <AddHealthinfoForm  /> */}
   
-
+      <AppBar  position="static" color="inherit">
+        <Typography variant="h2" align="center">Video Chat</Typography>
+      </AppBar>
+      <VideoPlayer />
+      <Sidebar>
+        <Notifications />
+      </Sidebar>
+   
     </div>
   );
 }

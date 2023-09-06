@@ -59,6 +59,7 @@ const Hospital = () => {
   };
 
   return (
+    <div className='hospital-form-register'>
     <div className="hospital-container">
       <h2>Hospital Registration</h2>
       <form onSubmit={handleSubmit}>
@@ -101,7 +102,7 @@ const Hospital = () => {
                   onClick={() => handleDeleteTreatment(treatment)}
                   className="delete-button"
                 >
-                  <i className="fas fa-trash"></i> 
+                  <i className="fas fa-trash-alt"></i> 
                 </button>
               </li>
             ))}
@@ -163,8 +164,12 @@ const Hospital = () => {
         <button type="button" onClick={handleAddSpecialistDoctor}>
           Add Specialist Doctor
         </button>
-        <button type="submit">Submit</button>
+        <div className='submit-button' >
+
+        <button  type="submit">Submit</button>
+        </div>
       </form>
+    </div>
     </div>
   );
 };

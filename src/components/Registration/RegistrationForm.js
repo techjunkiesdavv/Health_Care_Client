@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Registration.scss'; 
-import DoctorForm from './Doctor';
+import DoctorForm from './DoctorForm';
 
 const RegistrationForm = () => {
   const [stage, setStage] = useState(1);
