@@ -10,6 +10,8 @@ import Home from "./Pages/Home";
 import Legal from "./Pages/Legal";
 import NotFound from "./Pages/NotFound";
 import Appointment from "./Pages/Appointment";
+import { hairFields, heartFields} from './components/ModelForm/constFields'
+import CustomForm from './components/ModelForm/CustomForm';
 
 function App() {
   return (
@@ -20,9 +22,11 @@ function App() {
               element={
               <>
               <Home/>
-              <Facilities/>
+              
+              <CustomForm endpoint="/api/endpoint4" inputFields={hairFields} />
+              {/* <Facilities/>
               <AddHealthinfoForm />
-              <RegistrationForm />
+              <RegistrationForm /> */}
               
               </>
               } />
