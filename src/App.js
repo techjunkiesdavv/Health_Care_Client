@@ -1,12 +1,22 @@
-import Navbar from "./components/Navbar/Navbar";
-import Home from "./components/Home/Home";
-import Facilities from "./components/Facilities/Facilities";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./Pages/Home";
+import Legal from "./Pages/Legal";
+import NotFound from "./Pages/NotFound";
+import Appointment from "./Pages/Appointment";
+
 function App() {
   return (
-    <div>
-      <Navbar/>
-      <Home/>
-      <Facilities/>
+    <div className="App">
+      <Router basename="/Health-Plus">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/legal" element={<Legal />} />
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
