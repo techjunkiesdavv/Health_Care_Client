@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import './LoginForm.scss';
 
+import { Link } from "react-router-dom";
 import { FaUser, FaLock } from 'react-icons/fa';
+import { signin } from '../../actions/auth';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    // Handle login submission here
-    const userData = {
-      email,
-      password,
-    };
+
+    const userData =await signin({email,password})
     console.log('User Data:', userData);
   };
 
@@ -43,7 +42,7 @@ const LoginForm = () => {
         />
       </div>
       <button type="submit" className="submit-button">Login</button>
-   <div>Don't have a account? <span className='text-primary'>Create Account</span></div>
+   <div>Don't have a account? <span className='text-primary'><Link to ="/registration">Create Account</Link></span></div>
     </form>
 
     </div>

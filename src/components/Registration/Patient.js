@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
 import './Patient.scss';
+import { signup } from '../../actions/auth';
 
-const Patient = () => {
+const Patient = ({namee,email}) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [aadharCardNo, setAadharCardNo] = useState('');
   const [phoneNo, setPhoneNo] = useState('');
   const [address, setAddress] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     const patientData = {
+      namee,
+      email,
       password,
+      'category':'patient',
       aadharCardNo,
       phoneNo,
       address,
     };
-    console.log('Patient Data:', patientData);
+    const data = await signup(patientData);
+    console.log('Patient Data:', data);
   };
 
   return (

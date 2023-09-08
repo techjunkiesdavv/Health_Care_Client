@@ -1,69 +1,54 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import AddHealthinfoForm from "./components/AddHealth/AddHealthinfoForm";
-import BookAppointment from "./components/Appointment/BookAppointment";
-import Healthcare from "./components/HealthCareContent/HealthCare";
-import HealthcareContent from "./components/HealthCareContent/HealthcareContent";
-import GenerateOtp from "./components/Registration/GenerateOtp";
-import Hospital from "./components/Registration/Hospital";
-import LoginForm from "./components/Registration/LoginForm";
 import Patient from "./components/Registration/Patient";
 import RegistrationForm from "./components/Registration/RegistrationForm";
-import DoctorForm from './components/Registration/DoctorForm';
-import { Typography, AppBar } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import Facilities from "./components/Facilities/Facilities";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.scss";
+import Home from "./Pages/Home";
+import Legal from "./Pages/Legal";
+import NotFound from "./Pages/NotFound";
+import Appointment from "./Pages/Appointment";
+import LoginForm from './components/Registration/LoginForm';
+import BookAppointment from './components/Appointment/BookAppointment';
+import HealthcareContent from './components/HealthCareContent/HealthcareContent';
 
-import VideoPlayer from './components/VideoPlayer';
-import Sidebar from './components/Sidebar';
-import Notifications from './components/Notifications';
-
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    borderRadius: 15,
-    margin: '30px 100px',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '600px',
-    border: '2px solid black',
-
-    [theme.breakpoints.down('xs')]: {
-      width: '90%',
-    },
-  },
-  image: {
-    marginLeft: '15px',
-  },
-  wrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
-  },
-}));
-const App = () => {
-  
+function App() {
   return (
-    <div>
-      {/* <RegistrationForm/> */}
-      {/* <DoctorForm/> */}
-        {/* <Patient/> */}
-      {/* <GenerateOtp/> */}
-     {/* <Hospital/> */}
-     {/* <LoginForm/> */}
+  <BrowserRouter >
+     <Routes>
+            <Route
+              path="/"
+              element={
+              <>
+              {/* <Home/> */}
+              {/* <BookAppointment/> */}
+              {/* <AddHealthinfoForm/ */}
+              <HealthcareContent/>
 
-      {/* <BookAppointment/> */}
-      
-     
-      {/* <Healthcare/> */}
-      
-      {/* <AddHealthinfoForm  /> */}
+           
+              
+              </>
+              } />
 
-      {/* <VideoPlayer /> */}
-   
-   
-    </div>
+            
+              
+             <Route
+              path="/patient"
+              element={<Patient/>} />
+              
+          <Route path="/auth" element={<LoginForm />} />
+          
+          <Route path="/registration" element={<RegistrationForm />} />
+          <Route path="/legal" element={<Legal />} />
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="*" element={<NotFound />} />
+              </Routes>
+
+      
+      
+  </BrowserRouter>
   );
 }
 

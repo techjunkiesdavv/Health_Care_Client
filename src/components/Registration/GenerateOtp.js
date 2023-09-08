@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './GenerateOtp.scss';
+import { sendotp } from '../../actions/mail';
 
 
 const generateOTP = () => {
@@ -7,20 +8,29 @@ const generateOTP = () => {
   return otp.toString();
 };
 
-const GenerateOtp = () => {
+const GenerateOtp = ({setStage,email}) => {
   const [generatedOTP, setGeneratedOTP] = useState('');
   const [enteredOTP, setEnteredOTP] = useState('');
   const [isOTPVerified, setIsOTPVerified] = useState(false);
 
-  const handleGenerateOTP = () => {
+  const handleGenerateOTP = async() => {
     const otp = generateOTP();
+    
     setGeneratedOTP(otp);
     setIsOTPVerified(false);
+    
+    const data = await sendotp({otp,email})
+    
   };
 
   const handleVerifyOTP = () => {
+
+
+
+
     if (enteredOTP === generatedOTP) {
       setIsOTPVerified(true);
+      setStage(3)
     } else {
       setIsOTPVerified(false);
     }

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './Registration.scss'; 
 import DoctorForm from './DoctorForm';
+import { Link } from 'react-router-dom';
+import HospitalForm from './Hospital';
+import PatientForm from './Patient'
+import GenerateOtp from './GenerateOtp';
 
 const RegistrationForm = () => {
   const [stage, setStage] = useState(1);
@@ -18,25 +22,14 @@ const RegistrationForm = () => {
     }
   };
 
-  const renderFormBasedOnCategory = () => {
-    switch (category) {
-      // case 'hospital':
-      //   return <HospitalForm />;
-      case 'doctor':
-        return <DoctorForm />;
-      // case 'patient':
-      //   return <PatientForm />;
-      default:
-        return null;
-    }
-  };
+
 
   return (
     <div className='registration-form-container'> 
-    <div className="registration-form">
+ {stage===1 && (   <div  className="registration-form">
       <h1>Registration</h1>
       <form onSubmit={handleSubmit}>
-        <div className={`form-stage ${stage === 1 ? 'active' : ''}`}>
+        <div >
           
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required placeholder='Name' />
           <br />
@@ -45,19 +38,27 @@ const RegistrationForm = () => {
           <select value={category} onChange={(e) => setCategory(e.target.value)} required>
             <option value="">Select Category</option>
             <option value="doctor">Doctor</option>
-            <option value="doctor">Hospital</option>
-            <option value="doctor">Patient</option>
+            <option value="hospital">Hospital</option>
+            <option value="patient">Patient</option>
           </select>
           <br />
-          <button type="submit">Next</button>
+          <button type="submit" onClick={()=>setStage(stage+1)}>Next</button>
         </div>
-        <div className={`form-stage ${stage === 2 ? 'active' : ''}`}>
-          {renderFormBasedOnCategory()}
-          <button type="submit">Submit</button>
-        </div>
+        
       </form>
-    </div>
-    </div>
+      <div>Already have an Account <span className='text-primary'><Link to ="/auth">Login Here</Link></span></div>
+   
+    </div>)}
+
+
+    {stage===2 &&  <GenerateOtp setStage={setStage} email={email}/>}
+    {category==='doctor' && stage===3 && <DoctorForm namee={name} email={email}/> }
+    
+    {category==='patient' && stage===3 && <PatientForm namee={name} email={email}/> }
+    
+    {category==='hospital' && stage===3 && <HospitalForm namee={name} email={email}/> }
+    
+  </div>
   );
 };
 

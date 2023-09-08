@@ -7,13 +7,12 @@ function RegistrationForm() {
     const [patientDetails,setPatientDetails] = useState({firstName:'',lastName:'',phone:'',alternate:'',address:''});
     const [qrUrl,setUrl] = useState("");
     const [data,setData] = useState('');
+    const [readqrValue, setQrRead] = useState(false);
     const handleChange=(e)=>{
         setPatientDetails({...patientDetails,[e.target.name]:e.target.value});
       };
     const generateQrCode= async (e)=>{
         e.preventDefault();
-        //const BaseUrl = "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl="+"firstName:" + patientDetails.firstName+"lastName:"+patientDetails.lastName+"phone:"+patientDetails.phone+"alternte:"+patientDetails.alternate+"address:"+patientDetails.address;
-
         console.log(patientDetails)
         try{
           const data =patientDetails.firstName+"&"+patientDetails.lastName+"&"+patientDetails.phone+"&"+patientDetails.alternate+"&"+patientDetails.address;
@@ -32,6 +31,9 @@ function RegistrationForm() {
     }   
     const handleQrScanError=(err)=>{
       console.log(err);
+    }
+    const readqr =()=>{
+      setQrRead(!true);
     }
      return (
       <div>
@@ -106,6 +108,9 @@ function RegistrationForm() {
               </div>
               <div className={styles.button}>
                 <button type="submit">Generate QR Code</button>
+              </div>
+              <div className={styles.button}>
+                <button onClick={readqr}>Read QR Code</button>
               </div>
             </form>
             <div>

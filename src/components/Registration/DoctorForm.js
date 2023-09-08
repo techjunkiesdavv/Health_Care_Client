@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import FileBase64 from 'react-file-base64';
 import './DoctorForm.scss';
+import { signup } from '../../actions/auth';
 
-const DoctorForm = () => {
+const DoctorForm = ({namee,email}) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('Dr. John Smith');
-  const [phone, setPhone] = useState('1234567890');
-  const [photo, setPhoto] = useState(
-    'http://clipart-library.com/images_k/doctor-transparent-background/doctor-transparent-background-10.png'
-  );
+  const [name, setName] = useState(namee);
+  const [phone, setPhone] = useState();
+  
+  // const [email, setEmail] = useState(email);
+  const [photo, setPhoto] = useState('');
   const [ticketPrice, setTicketPrice] = useState(150);
   const [specialization, setSpecialization] = useState('Cardiology');
   const [qualifications, setQualifications] = useState(['MD', 'PhD']);
@@ -44,17 +45,18 @@ const DoctorForm = () => {
       setSteps(steps - 1);
     
   };
-
-  const handleSubmit = (e) => {
+console.log(selectedSlotTimings)
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (steps === 3) {
       // Handle form submission here
       const doctorData = {
-        confirmPassword,
+      email,
         password,
         name,
         phone,
         photo,
+        'category':'doctor',
         ticketPrice,
         specialization,
         qualifications,
@@ -65,8 +67,10 @@ const DoctorForm = () => {
         workingDays,
         timeSlotsPerDay,
         avgTimePerPatient,
-        slotTimings,
+        selectedSlotTimings,
       };
+
+      const data =await signup(doctorData);
       console.log('Doctor Data:', doctorData);
     } else {
       setSteps(steps + 1);

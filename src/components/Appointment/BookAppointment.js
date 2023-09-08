@@ -6,12 +6,13 @@ const BookAppointment = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState('');
 
- 
   const availableSeats = {
     1: 5, // Monday
     3: 3, // Wednesday
     5: 8, // Friday
   };
+
+  const allowedDays = [1, 3, 5]; // Specify the days you want to allow
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -27,9 +28,14 @@ const BookAppointment = () => {
     '02:00 PM', '03:00 PM', '04:00 PM'
   ];
 
+  const isDateDisabled = (date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for comparison
+    return date < today || !allowedDays.includes(date.getDay());
+  };
+
   const isWeekdayDisabled = ({ date }) => {
-    const dayOfWeek = date.getDay();
-    return dayOfWeek !== 1 && dayOfWeek !== 3 && dayOfWeek !== 5; 
+    return !allowedDays.includes(date.getDay());
   };
 
   const renderTimeSlots = () => {
@@ -47,26 +53,25 @@ const BookAppointment = () => {
         <Calendar
           onChange={handleDateChange}
           value={selectedDate}
-          tileDisabled={isWeekdayDisabled}
+          tileDisabled={({ date }) => isDateDisabled(date)}
+          tileClassName={({ date }) => isDateDisabled(date) ? 'disabled-date' : ''}
         />
       </div>
       {selectedDate && (
         <div className="time-slot-selection">
           <div>
-          <label>Select a Time Slot:</label>
-          <select value={selectedTimeSlot} onChange={handleTimeSlotChange}>
-            <option value="">Select Time Slot</option>
-            {renderTimeSlots()}
-          </select>
-        </div>
-        
-        <div>Available Seats: {availableSeats[selectedDate.getDay()]}</div>
+            <label>Select a Time Slot:</label>
+            <select value={selectedTimeSlot} onChange={handleTimeSlotChange}>
+              <option value="">Select Time Slot</option>
+              {renderTimeSlots()}
+            </select>
+          </div>
+          <div>Available Seats: {availableSeats[selectedDate.getDay()]}</div>
         </div>
       )}
       <button
         type="button"
         disabled={!selectedDate || !selectedTimeSlot}
-        
       >
         Book Appointment
       </button>

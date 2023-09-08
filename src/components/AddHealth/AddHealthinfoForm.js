@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FileBase64 from 'react-file-base64';
 import './AddHealthInfoForm.scss';
+import { addhealth } from '../../actions/health';
 
 const AddHealthinfoForm = () => {
   const [title, setTitle] = useState('');
@@ -17,19 +18,24 @@ const AddHealthinfoForm = () => {
     setSubheadings(updatedSubheadings);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const healthInfo = {
+      name:'utsav',
+      email:'u@gmail.com',
       title,
       description,
       image,
       subheadings,
     };
+ 
+    const data = await addhealth(healthInfo)
+    console.log(data);
     // onAdd(healthInfo);
-    setTitle('');
-    setDescription('');
-    setImage('');
-    setSubheadings([{ subheading: '', subDescription: '' }]);
+    // setTitle('');
+    // setDescription('');
+    // setImage('');
+    // setSubheadings([{ subheading: '', subDescription: '' }]);
   };
 
   return (
