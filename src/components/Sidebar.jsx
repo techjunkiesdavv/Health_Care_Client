@@ -1,10 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState} from 'react';
 import { Button, TextField, Grid, Typography, Container, Paper } from '@material-ui/core';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { SocketContext } from '../Context';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,8 +36,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Sidebar = ({ children }) => {
-  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
+const Sidebar = ({    name ,
+  setName,
+  me,
+  callAccepted,
+  leaveCall,
+  callUser,callEnded}) => {
+  // const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState('');
   const classes = useStyles();
 
@@ -71,7 +75,7 @@ const Sidebar = ({ children }) => {
             </Grid>
           </Grid>
         </form>
-        {children}
+    
       </Paper>
     </Container>
   );
