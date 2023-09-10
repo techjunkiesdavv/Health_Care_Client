@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Doctor from "../assets/doctor_picture.png";
+import Doctor from "../assets/doc.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarCheck, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate  } from "react-router-dom";
@@ -36,7 +36,7 @@ function Hero() {
     <div className="section-container">
       <div className="hero-section">
         <div className="text-section">
-          <p className="text-headline">❤️ Health comes first</p>
+          <p className="text-headline">Digitalizing HealthCare</p>
           <h2 className="text-title">
             Find your Doctor and make an Appointments
           </h2>

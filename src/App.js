@@ -1,21 +1,23 @@
 
 import React from 'react';
-import AddHealthinfoForm from "./components/AddHealth/AddHealthinfoForm";
 import Patient from "./components/Registration/Patient";
-import RegistrationForm from "./components/registrationform/RegistrationForm";
-import Facilities from "./components/Facilities/Facilities";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Home from "./Pages/Home";
 import Legal from "./Pages/Legal";
 import NotFound from "./Pages/NotFound";
 import Appointment from "./Pages/Appointment";
-import { hairFields, heartFields} from './components/ModelForm/constFields'
+import { breastFields, diabetesFields, hairFields, heartFields} from './components/ModelForm/constFields'
 import CustomForm from './components/ModelForm/CustomForm';
+import TestPrediction from './components/ModelForm/TestPrediction';
+import { checkBreastCancer, checkDiabetes, checkHairLoss, checkHeart } from './api/Modelapi';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
   <BrowserRouter >
+  
+      <Navbar />
      <Routes>
             <Route
               path="/"
@@ -23,10 +25,8 @@ function App() {
               <>
               <Home/>
               
-              <CustomForm endpoint="/api/endpoint4" inputFields={hairFields} />
-              {/* <Facilities/>
-              <AddHealthinfoForm />
-              <RegistrationForm /> */}
+              
+              <TestPrediction />
               
               </>
               } />
@@ -36,7 +36,12 @@ function App() {
               path="/patient"
               element={<Patient/>} />
           <Route path="/legal" element={<Legal />} />
-          <Route path="/appointment" element={<Appointment />} />
+           <Route path="/appointment" element={<Appointment />} />
+          <Route path="/predict_hair" element={<CustomForm apiFunction={checkHairLoss} inputFields={hairFields} />} />
+            <Route path="/predict_heart" element={<CustomForm apiFunction={checkHeart} inputFields={heartFields} />} />
+             <Route path="/predict_breastCancer" element={<CustomForm apiFunction={checkBreastCancer} inputFields={breastFields} />} />
+             <Route path="/predict_diabetes" element={<CustomForm apiFunction={checkDiabetes} inputFields={diabetesFields} />} />
+      
           <Route path="*" element={<NotFound />} />
               </Routes>
 
