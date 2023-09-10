@@ -13,6 +13,10 @@ import Appointment from "./Pages/Appointment";
 import LoginForm from './components/Registration/LoginForm';
 import BookAppointment from './components/Appointment/BookAppointment';
 import HealthcareContent from './components/HealthCareContent/HealthcareContent';
+import DoctorSearch from './components/Doctor/DoctorSearch';
+import DoctorAppointments from './components/Doctor/DoctorAppointments';
+import CancelAppointment from './components/Doctor/CancelAppointment';
+import HospitalSearch from './components/Hospital/HospitalSearch';
 
 function App() {
   return (
@@ -25,7 +29,12 @@ function App() {
               {/* <Home/> */}
               {/* <BookAppointment/> */}
               {/* <AddHealthinfoForm/ */}
-              <HealthcareContent/>
+              {/* <HealthcareContent/> */}
+              <DoctorSearch/>
+              {/* <DoctorAppointments/> */}
+              <CancelAppointment/>
+              {/* <HospitalSearch/> */}
+
 
            
               

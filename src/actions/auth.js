@@ -4,9 +4,11 @@ export const signin = async(formData)=>{
 
 try {
     
-    console.log(formData)
-    // const {data}=await api.signIn(formData);
-    // console.log(data.result);
+   
+    const {data}=await api.signIn(formData);
+    localStorage.setItem('profile',JSON.stringify({...data}));
+   
+    return data;
 
     
 
@@ -23,6 +25,8 @@ export const signup =async(formData)=>{
     try {
         console.log(formData)
     const {data}=await api.signUp(formData);
+    
+    localStorage.setItem('profile',JSON.stringify({...data}));
     return data;
     
     

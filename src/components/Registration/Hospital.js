@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import './Hospital.scss'; // Link to the SCSS file
 import { signup } from '../../actions/auth';
 
+import { useNavigate } from 'react-router-dom';
+
 const Hospital = ({namee,email}) => {
+  const navigate=useNavigate();
   const [phoneNo, setPhoneNo] = useState('');
   const [address, setAddress] = useState('');
   const [selectedTreatments, setSelectedTreatments] = useState([]);
@@ -61,11 +64,13 @@ const Hospital = ({namee,email}) => {
       'category':'hospital',
       phoneNo,
       address,
-      availableTests,
+      'availableTests':selectedTests,
       selectedTreatments,
       specialistDoctors
     };
     const data = await signup(hospitalData);
+    if(data)
+    navigate('/');
     console.log('Hospital Data:', data);}
   };
 

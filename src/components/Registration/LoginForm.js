@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 import { FaUser, FaLock } from 'react-icons/fa';
 import { signin } from '../../actions/auth';
 
+import { useNavigate } from 'react-router-dom';
+
 const LoginForm = () => {
+  const navigate=useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,6 +16,8 @@ const LoginForm = () => {
     e.preventDefault();
 
     const userData =await signin({email,password})
+    if(userData)
+    navigate('/');
     console.log('User Data:', userData);
   };
 

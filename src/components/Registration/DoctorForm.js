@@ -3,7 +3,10 @@ import FileBase64 from 'react-file-base64';
 import './DoctorForm.scss';
 import { signup } from '../../actions/auth';
 
+import { useNavigate} from 'react-router-dom';
+
 const DoctorForm = ({namee,email}) => {
+  const navigate=useNavigate();
   const [confirmPassword, setConfirmPassword] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState(namee);
@@ -71,7 +74,8 @@ console.log(selectedSlotTimings)
       };
 
       const data =await signup(doctorData);
-      console.log('Doctor Data:', doctorData);
+      if(data)
+      navigate('/');
     } else {
       setSteps(steps + 1);
     }

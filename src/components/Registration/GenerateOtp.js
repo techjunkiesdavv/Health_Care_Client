@@ -20,7 +20,9 @@ const GenerateOtp = ({setStage,email}) => {
     setIsOTPVerified(false);
     
     const data = await sendotp({otp,email})
+    console.log(data);
     
+
   };
 
   const handleVerifyOTP = () => {
@@ -40,8 +42,8 @@ const GenerateOtp = ({setStage,email}) => {
     <div className="generate-otp-container">
       <h2>OTP Verification</h2>
       <div className="otp-controls">
-        <button onClick={handleGenerateOTP}>Generate OTP</button>
-        <p>Generated OTP: {generatedOTP}</p>
+        {generatedOTP===''&&(<button onClick={handleGenerateOTP}>Send OTP</button>)}
+        {generatedOTP && (<p>Otp sent to {email}</p>)}
       </div>
       <div className="otp-input">
         <input

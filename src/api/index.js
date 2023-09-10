@@ -22,6 +22,25 @@ API.interceptors.request.use((req) => {
 
   
   export const addHealth=(formData)=> API.post('/add/health',formData);
+
+
+
+
+
+  
+  export const getDoctors=(formData)=> API.post('/doctor/get',formData);
+  
+  export const getDoctorsbyid=(formData)=> API.post('/doctor/getbyid',formData);
+  
+  export const bookApp=(formData)=> API.post('/doctor/addappointment',formData);
+
+
+
+  export const cancelApp=(formData)=> API.post('/doctor/cancelappointment',formData);
+
+
+  
+  export const getHospital=(formData)=> API.post('/hospital/get',formData);
  
 
 
