@@ -1,0 +1,82 @@
+// Define styles for the container
+.test_prediction {
+  margin: 20px;
+  padding: 10px;
+
+  h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  // Flex layout for prediction cards
+  .prediction_cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    // Media query for tablets (768px)
+    @media (min-width: 768px) {
+      gap: 30px;
+    }
+
+    // Media query for desktop (992px)
+    @media (min-width: 992px) {
+      gap: 40px;
+    }
+  }
+}
+
+// Styles for individual prediction cards
+.prediction_card {
+  flex: 1;
+  display: flex;
+  flex-direction: column; // Display children in a column layout
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: contain;
+  }
+
+  h3.prediction_card_title {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  h6.prediction_accuracy {
+    font-size: 16px;
+    text-align: left ;
+    margin-left: 20px;
+    margin-top: auto;
+    color: #555;
+  }
+
+  // Add a hover effect
+  &:hover {
+    transform: translateY(-5px); // Move card up slightly on hover
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); // Add a subtle shadow on hover
+  }
+
+  button.button {
+    margin-top: auto; // Push the button to the bottom
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  // Button hover effect
+  &:hover {
+    button.button {
+      background-color: #0056b3; // Darker background color on hover
+    }
+  }
+}
