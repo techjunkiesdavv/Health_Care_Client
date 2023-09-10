@@ -32,6 +32,8 @@ API.interceptors.request.use((req) => {
   
   export const getDoctorsbyid=(formData)=> API.post('/doctor/getbyid',formData);
   
+  export const getDoctorsAppbyid=(formData)=> API.post('/doctor/getbyappid',formData);
+  
   export const bookApp=(formData)=> API.post('/doctor/addappointment',formData);
 
 

@@ -26,6 +26,18 @@ export const getdoctorsbyid=async(formdata)=>{
         
     }
 }
+export const getdoctorsAppbyid=async(formdata)=>{
+
+
+    try {
+
+        const {data}= await api.getDoctorsAppbyid(formdata);
+        console.log(data)
+        return data;
+    } catch (error) {
+        
+    }
+}
 
 
 export const bookAppointment= async(formdata)=>{
