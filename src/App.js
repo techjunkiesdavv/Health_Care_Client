@@ -12,7 +12,7 @@ import CustomForm from './components/ModelForm/CustomForm';
 import TestPrediction from './components/ModelForm/TestPrediction';
 import { checkBreastCancer, checkDiabetes, checkHairLoss, checkHeart } from './api/Modelapi';
 import Navbar from './components/Navbar';
-
+import Login from './components/Registration/LoginForm'
 function App() {
   return (
   <BrowserRouter >
@@ -24,8 +24,7 @@ function App() {
               element={
               <>
               <Home/>
-              
-              
+              <Login/>
               <TestPrediction />
               
               </>
