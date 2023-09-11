@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import './Hospital.scss'; // Link to the SCSS file
+import { signup } from '../../actions/auth';
 
-const Hospital = () => {
+import { useNavigate } from 'react-router-dom';
+
+const Hospital = ({namee,email}) => {
+  const navigate=useNavigate();
   const [phoneNo, setPhoneNo] = useState('');
   const [address, setAddress] = useState('');
   const [selectedTreatments, setSelectedTreatments] = useState([]);
+  
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [password, setPassword] = useState('');
   const [availableTreatments, setAvailableTreatments] = useState([
     'Cardiology', 'Orthopedics', 'Neurology', 'Dermatology', 'Ophthalmology', 'Gastroenterology'
   ]);
@@ -47,21 +54,45 @@ const Hospital = () => {
     setSelectedTests([...selectedTests, test]);
     setAvailableTests(availableTests.filter(option => option !== test));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const hospitalData = {
+    if(password===confirmPassword)
+  {  const hospitalData = {
+      namee,
+      email,
+      password,
+      'category':'hospital',
       phoneNo,
       address,
+      'availableTests':selectedTests,
       selectedTreatments,
       specialistDoctors
     };
-    console.log('Hospital Data:', hospitalData);
+    const data = await signup(hospitalData);
+    if(data)
+    navigate('/');
+    console.log('Hospital Data:', data);}
   };
 
   return (
+    <div className='hospital-form-register'>
     <div className="hospital-container">
       <h2>Hospital Registration</h2>
       <form onSubmit={handleSubmit}>
+      <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <label>Confirm Password:</label>
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
         <label>Phone No:</label>
         <input
           type="text"
@@ -101,7 +132,7 @@ const Hospital = () => {
                   onClick={() => handleDeleteTreatment(treatment)}
                   className="delete-button"
                 >
-                  <i className="fas fa-trash"></i> 
+                  <i className="fas fa-trash-alt"></i> 
                 </button>
               </li>
             ))}
@@ -163,8 +194,12 @@ const Hospital = () => {
         <button type="button" onClick={handleAddSpecialistDoctor}>
           Add Specialist Doctor
         </button>
-        <button type="submit">Submit</button>
+        <div className='submit-button' >
+
+        <button  type="submit">Submit</button>
+        </div>
       </form>
+    </div>
     </div>
   );
 };

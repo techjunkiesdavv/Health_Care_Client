@@ -1,14 +1,21 @@
 // HealthcareDetails.scss
 
 .healthcare-details {
-    max-width: 800px;
+    
     margin: 0 auto;
     padding: 20px;
+    height: 100vh;
+    background-color: rgb(208, 241, 243);
+    color: #063f41;
+    display: flex;
+    flex-direction: row;
+
   
     .healthcare-details-title {
       font-size: 2rem;
       font-weight: bold;
       margin-bottom: 10px;
+      color: #063f41;
     }
   
     .healthcare-details-image {
@@ -18,12 +25,13 @@
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       margin-bottom: 20px;
+   margin-left: auto;
     }
   
     .healthcare-details-description {
       font-size: 1rem;
       line-height: 1.5;
-      color: #333;
+      color: #063f41;
     }
   }
   

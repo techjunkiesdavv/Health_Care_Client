@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
 import './Patient.scss';
+import { signup } from '../../actions/auth';
 
-const Patient = () => {
+import { useNavigate } from 'react-router-dom';
+
+const Patient = ({namee,email}) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [aadharCardNo, setAadharCardNo] = useState('');
   const [phoneNo, setPhoneNo] = useState('');
   const [address, setAddress] = useState('');
-
-  const handleSubmit = (e) => {
+  const navigate=useNavigate();
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     const patientData = {
+      namee,
+      email,
       password,
+      'category':'patient',
       aadharCardNo,
       phoneNo,
       address,
     };
-    console.log('Patient Data:', patientData);
+    const data = await signup(patientData);
+    if(data)
+    navigate('/');
+    console.log('Patient Data:', data);
   };
 
   return (
