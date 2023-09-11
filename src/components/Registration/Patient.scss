@@ -21,12 +21,13 @@ align-items: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
   // display: flex;
-align-items: center;
-  // justify-content: center;
+  
+// align-items: center;
+  justify-content: center;
   h2 {
     margin-bottom: 10px;
     font-size: 24px;
-    color: #333;
+    color: #269ea2;
   }
 
   form {
@@ -41,17 +42,17 @@ align-items: center;
 
       padding: 0.5rem 0.5rem;
       border: none;
-      border-bottom: 1px solid #060606;
+      border-bottom: 1px solid #269ea2;
       border-radius: 0.25rem;
     
-      background-color: rgba(0, 0, 0, 0.05); 
+      background-color: rgba(237, 225, 225, 0.445);
       color: #333;
       transition: border-color 0.3s, background-color 0.3s;
 
       &:focus {
         outline: none;
-        border-color: #000000;
-        background-color: rgba(0, 0, 0, 0.1);
+        border-color: #063f41;
+        background-color: rgba(237, 225, 225, 0.445);
       }
     }
 
@@ -61,7 +62,7 @@ align-items: center;
 
     button {
       margin-top: 20px;
-      background-color: #464a4e;
+      background-color: #269ea2;
       color: #ffffff;
       border: none;
       padding: 8px 12px;
@@ -71,7 +72,7 @@ align-items: center;
       transition: background-color 0.2s;
 
       &:hover {
-        background-color: #000000;
+        background-color: #063f41;
       }
     }
   }

@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCommentDots,
   faBars,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import "../Styles/Navbar.css";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function Navbar() {
+function Navbar(props) {
   const [nav, setNav] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
   const openNav = () => {
     setNav(!nav);
   };
 
   const handleChatBtnClick = () => {
     if (!isButtonDisabled) {
-      const predictionElement = document.getElementById("prediction");
-
-      if (predictionElement) {
-        predictionElement.scrollIntoView({ behavior: "smooth" });
-      }
+      toast.info("Experiencing high traffic, Please wait a moment.", {
+        position: toast.POSITION.TOP_CENTER,
+        onOpen: () => setIsButtonDisabled(true),
+        onClose: () => setIsButtonDisabled(false),
+      });
     }
   };
 
@@ -36,30 +36,35 @@ function Navbar() {
 
       {/* Desktop */}
       <ul className="navbar-items">
-        <li>
-          <Link to="/" className="navbar-links">
-            Home
-          </Link>
+        <li >
+        <Link to="/auth" className="navbar-links">
+          Login 
+        </Link>
         </li>
         <li>
-          <a href="#services" className="navbar-links">
-            Services
-          </a>
+       {
+        props.category ==='patient'?<Link to="/searchdoctor" className="navbar-links">
+          Search Doctor 
+        </Link>
+        :
+        <Link to="/cancelappointmnet" className="navbar-links">
+         Cancel Appointment 
+        </Link>}
         </li>
         <li>
-          <a href="#about" className="navbar-links">
-            About
-          </a>
+        <Link to="/hospitalresources" className="navbar-links">
+         Hospital Resources 
+        </Link>
         </li>
         <li>
-          <a href="#reviews" className="navbar-links">
-            Reviews
-          </a>
-        </li>
-        <li>
-          <a href="#doctors" className="navbar-links">
-            Doctors
-          </a>
+       { props.category ==='patient' ?
+        <Link to="/searchdoctor" className="navbar-links">
+         Search Doctors 
+        </Link>
+        :
+        <Link to="/appointmentqueue" className="navbar-links">
+         Appointment Queue 
+        </Link>}
         </li>
       </ul>
 
@@ -69,7 +74,7 @@ function Navbar() {
         disabled={isButtonDisabled}
         onClick={handleChatBtnClick}
       >
-        Do Tests
+        <FontAwesomeIcon icon={faCommentDots} /> Live Chat
       </button>
 
       {/* Mobile */}

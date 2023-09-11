@@ -1,35 +1,58 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-import './BookAppointment.scss'; 
+import './BookAppointment.scss';
+import { bookAppointment } from '../../actions/doctor';
 
-const BookAppointment = () => {
+const BookAppointment = ({ chooseDoctor }) => {
+  const [doctorData, setDoctorData] = useState(chooseDoctor);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState('');
-
- 
-  const availableSeats = {
-    1: 5, // Monday
-    3: 3, // Wednesday
-    5: 8, // Friday
-  };
+  const[availableSeats,setAvailableSeats]=useState(0)
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setSelectedTimeSlot('');
   };
 
+
+  const user=JSON.parse(localStorage.getItem('profile'));
+  console.log(user);
+  const calculateMinutesBetweenTimes = (startTime, endTime) => {
+    const [startHours, startMinutes] = startTime.split(':').map(Number);
+    const [endHours, endMinutes] = endTime.split(':').map(Number);
+  
+    const totalStartMinutes = startHours * 60 + startMinutes;
+    const totalEndMinutes = endHours * 60 + endMinutes;
+  
+    return totalEndMinutes - totalStartMinutes;
+  };
   const handleTimeSlotChange = (event) => {
-    setSelectedTimeSlot(event.target.value);
+    const selectedSlot = event.target.value;
+  
+    if (selectedSlot) {
+      const [startTime, endTime] = selectedSlot.split('-').map((time) => time.trim());
+  
+      const minutesBetweenTimes = calculateMinutesBetweenTimes(startTime, endTime);
+      setAvailableSeats(minutesBetweenTimes / doctorData.avgTimePerPatient);
+      console.log(availableSeats)
+      setSelectedTimeSlot(selectedSlot);
+    } else {
+   setAvailableSeats(0);
+      setSelectedTimeSlot('');
+    }
   };
 
-  const availableTimeSlots = [
-    '09:00 AM', '10:00 AM', '11:00 AM',
-    '02:00 PM', '03:00 PM', '04:00 PM'
-  ];
+  const availableTimeSlots = doctorData.slotTimings;
 
-  const isWeekdayDisabled = ({ date }) => {
-    const dayOfWeek = date.getDay();
-    return dayOfWeek !== 1 && dayOfWeek !== 3 && dayOfWeek !== 5; 
+  const isDateDisabled = (date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Check if the selected date is not in the working days or is in the past
+    return (
+      date < today ||
+      !doctorData?.workingDays?.includes(date.toLocaleDateString('en-US', { weekday: 'long' }))
+    );
   };
 
   const renderTimeSlots = () => {
@@ -40,6 +63,27 @@ const BookAppointment = () => {
     ));
   };
 
+const book=async(e)=>{
+  const formData={
+    "doctorId": doctorData._id,
+    "patientId": user?.result?._id,
+    "patientEmail": user?.result?.email,
+    "appointmentDate": selectedDate,
+    "slotTime":selectedTimeSlot
+  }
+  const data = await bookAppointment(formData);
+  console.log(data);
+}
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="book-appointment-container">
       <h2>Book an Appointment</h2>
@@ -47,24 +91,22 @@ const BookAppointment = () => {
         <Calendar
           onChange={handleDateChange}
           value={selectedDate}
-          tileDisabled={isWeekdayDisabled}
+          tileDisabled={({ date }) => isDateDisabled(date)}
+          tileClassName={({ date }) => (isDateDisabled(date) ? 'disabled-date' : '')}
         />
       </div>
       {selectedDate && (
         <div className="time-slot-selection">
-          <label>Select a Time Slot:</label>
-          <select value={selectedTimeSlot} onChange={handleTimeSlotChange}>
-            <option value="">Select Time Slot</option>
-            {renderTimeSlots()}
-          </select>
-          <p>Available Seats: {availableSeats[selectedDate.getDay()]}</p>
+          <div>
+            <label>Select a Time Slot:</label>
+            <select value={selectedTimeSlot} onChange={handleTimeSlotChange}>
+              <option value="">Select Time Slot</option>
+              {renderTimeSlots()}
+            </select>
+          </div>
         </div>
       )}
-      <button
-        type="button"
-        disabled={!selectedDate || !selectedTimeSlot}
-        
-      >
+      <button type="button" disabled={!selectedDate || !selectedTimeSlot} onClick={book} >
         Book Appointment
       </button>
     </div>
