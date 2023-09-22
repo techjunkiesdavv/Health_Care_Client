@@ -66,6 +66,13 @@ function Navbar(props) {
          Appointment Queue 
         </Link>}
         </li>
+        <li>
+        {
+        <Link to="/qrcode" className="navbar-links">
+          QR Code
+        </Link>
+        }
+        </li>
       </ul>
 
       <button

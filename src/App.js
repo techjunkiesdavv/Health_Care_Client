@@ -17,6 +17,7 @@ import DoctorAppointments from "./components/Doctor/DoctorAppointments";
 import CancelAppointment from "./components/Doctor/CancelAppointment";
 import HospitalSearch from "./components/Hospital/HospitalSearch";
 import Navbar from "./components/Navbar";
+import RegistrationFormm from "./components/registrationform/RegistrationForm";
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +33,7 @@ function App() {
         />
 
         <Route path="/auth" element={<LoginForm />} />
+        <Route path="/qrcode" element={<RegistrationFormm />} />
         <Route path="/registration" element={<RegistrationForm />} />
         <Route path="/legal" element={<Legal />} />
         <Route path="/appointment" element={<Appointment />} />
