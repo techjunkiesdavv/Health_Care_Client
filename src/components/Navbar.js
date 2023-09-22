@@ -9,10 +9,9 @@ import "../Styles/Navbar.css";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function Navbar() {
+function Navbar(props) {
   const [nav, setNav] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
   const openNav = () => {
     setNav(!nav);
   };
@@ -37,30 +36,42 @@ function Navbar() {
 
       {/* Desktop */}
       <ul className="navbar-items">
-        <li>
-          <Link to="/" className="navbar-links">
-            Home
-          </Link>
+        <li >
+        <Link to="/auth" className="navbar-links">
+          Login 
+        </Link>
         </li>
         <li>
-          <a href="#services" className="navbar-links">
-            Services
-          </a>
+       {
+        props.category ==='patient'?<Link to="/searchdoctor" className="navbar-links">
+          Search Doctor 
+        </Link>
+        :
+        <Link to="/cancelappointmnet" className="navbar-links">
+         Cancel Appointment 
+        </Link>}
         </li>
         <li>
-          <a href="#about" className="navbar-links">
-            About
-          </a>
+        <Link to="/hospitalresources" className="navbar-links">
+         Hospital Resources 
+        </Link>
         </li>
         <li>
-          <a href="#reviews" className="navbar-links">
-            Reviews
-          </a>
+       { props.category ==='patient' ?
+        <Link to="/searchdoctor" className="navbar-links">
+         Search Doctors 
+        </Link>
+        :
+        <Link to="/appointmentqueue" className="navbar-links">
+         Appointment Queue 
+        </Link>}
         </li>
         <li>
-          <a href="#doctors" className="navbar-links">
-            Doctors
-          </a>
+        {
+        <Link to="/qrcode" className="navbar-links">
+          QR Code
+        </Link>
+        }
         </li>
       </ul>
 

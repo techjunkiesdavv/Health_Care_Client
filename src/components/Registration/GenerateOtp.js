@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './GenerateOtp.scss';
+import { sendotp } from '../../actions/mail';
 
 
 const generateOTP = () => {
@@ -7,20 +8,31 @@ const generateOTP = () => {
   return otp.toString();
 };
 
-const GenerateOtp = () => {
+const GenerateOtp = ({setStage,email}) => {
   const [generatedOTP, setGeneratedOTP] = useState('');
   const [enteredOTP, setEnteredOTP] = useState('');
   const [isOTPVerified, setIsOTPVerified] = useState(false);
 
-  const handleGenerateOTP = () => {
+  const handleGenerateOTP = async() => {
     const otp = generateOTP();
+    
     setGeneratedOTP(otp);
     setIsOTPVerified(false);
+    
+    const data = await sendotp({otp,email})
+    console.log(data);
+    
+
   };
 
   const handleVerifyOTP = () => {
+
+
+
+
     if (enteredOTP === generatedOTP) {
       setIsOTPVerified(true);
+      setStage(3)
     } else {
       setIsOTPVerified(false);
     }
@@ -30,8 +42,8 @@ const GenerateOtp = () => {
     <div className="generate-otp-container">
       <h2>OTP Verification</h2>
       <div className="otp-controls">
-        <button onClick={handleGenerateOTP}>Generate OTP</button>
-        <p>Generated OTP: {generatedOTP}</p>
+        {generatedOTP===''&&(<button onClick={handleGenerateOTP}>Send OTP</button>)}
+        {generatedOTP && (<p>Otp sent to {email}</p>)}
       </div>
       <div className="otp-input">
         <input

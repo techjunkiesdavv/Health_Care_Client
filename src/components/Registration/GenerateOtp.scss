@@ -7,7 +7,8 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   
     h2 {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      color: #269ea2;
     }
   
     .otp-controls {
@@ -17,10 +18,16 @@
         border: none;
         padding: 5px 10px;
         cursor: pointer;
+        &:hover {
+          background-color: #063f41;
+        }
       }
+      
   
       p {
         margin-top: 10px;
+        color: #0f6341;
+        font-size:20px;
       }
     }
   
@@ -36,12 +43,15 @@
       }
   
       button {
-        background-color: #28a745;
+        background-color:#269ea2;
         color: #fff;
         border: none;
         padding: 5px 10px;
         cursor: pointer;
         margin-left: 10px;
+        &:hover {
+          background-color: #063f41;
+        }
       }
     }
   
@@ -49,11 +59,11 @@
       margin-top: 10px;
       font-weight: bold;
   
-      &.text-success {
+      .success {
         color: #28a745;
       }
   
-      &.text-error {
+      .error {
         color: #dc3545;
       }
     }

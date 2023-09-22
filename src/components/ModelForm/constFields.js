@@ -16,7 +16,7 @@ export const heartFields = [
 
 export const hairFields = [
   { name: 'Chemotherapy_Regimen', label: 'Chemotherapy Regimen', type: 'number', required: true },
-  { name: 'Drug_Dosage', label: 'Drug Dosage (mg)', type: 'number', required: true },
+  { name: 'Drug_Dosage(mg)', label: 'Drug Dosage (mg)', type: 'number', required: true },
   { name: 'Age', label: 'Age', type: 'number', required: true },
   { name: 'Hypertension', label: 'Hypertension', type: 'number', required: true },
   { name: 'Family_History', label: 'Family History', type: 'number', required: true },

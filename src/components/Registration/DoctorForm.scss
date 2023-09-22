@@ -1,7 +1,18 @@
 /* DoctorForm.scss */
+.doctor-form-register{
+  background-image: url('../../assets/bg_form.jpg');
+  
+  height:100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+align-items: center;
+  justify-content: center;
+
 
 .doctor-form-container {
-    max-width: 600px;
+    min-width: 600px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -44,14 +55,7 @@
           margin: 0 5px;
         }
   
-        button {
-          background-color: #ff6b6b;
-          border: none;
-          color: white;
-          padding: 5px 10px;
-          border-radius: 3px;
-          cursor: pointer;
-        }
+      
       }
     }
   
@@ -64,14 +68,29 @@
       }
     }
   
-    button[type="submit"] {
-      background-color: #008cff;
+    button {
+      margin-top: 20px;
+      background-color: #269ea2;
+      color: #ffffff;
       border: none;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-left: 2%;
       font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #063f41;
+      }
     }
+    .moving-button{
+      display: flex;
+      flex-direction: column;
+      
+      
+    }
+
   }
+}
   
